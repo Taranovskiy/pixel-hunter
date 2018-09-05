@@ -1,6 +1,9 @@
+import setActiveScreen from './setActiveScreen';
 import createElement from './createElement';
+import rulesElement from './rulesElement';
 
-const template = `
+export default () => {
+  const template = `
   <div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -26,6 +29,12 @@ const template = `
   </footer>
 `;
 
-const greetingElement = createElement(template);
+  const greetingElement = createElement(template);
 
-export default greetingElement;
+  const continueButton = greetingElement.querySelector(`.greeting__continue`);
+  continueButton.addEventListener(`click`, () => { console.log(rulesElement()); setActiveScreen(rulesElement()); });
+
+  return greetingElement;
+}
+
+

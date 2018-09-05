@@ -1,6 +1,7 @@
 import createElement from './createElement';
 
-const template = `
+export default () => {
+  const template = `
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -68,6 +69,8 @@ const template = `
   </footer>
 `;
 
-const gameOneElement = createElement(template);
+  const gameOneElement = createElement(template);
 
-export default gameOneElement;
+  return gameOneElement;
+}
+
