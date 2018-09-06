@@ -1,6 +1,11 @@
 import createElement from './createElement';
+import greetingElement from "./greetingElement";
+import setActiveScreen from "./setActiveScreen";
+import statsElement from "./statsElement";
 
-const template = `
+
+export default () => {
+  const template = `
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -55,6 +60,17 @@ const template = `
   </footer>
 `;
 
-const gameThreeElement = createElement(template);
+  const gameThreeElement = createElement(template);
 
-export default gameThreeElement;
+  const backButton = gameThreeElement.querySelector(`.header__back`);
+  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+
+  const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
+  gameOption.forEach((item) => {
+    item.addEventListener('click', () => setActiveScreen(statsElement()));
+  });
+
+  return gameThreeElement;
+}
+
+

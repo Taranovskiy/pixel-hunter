@@ -1,6 +1,9 @@
 import createElement from './createElement';
+import greetingElement from "./greetingElement";
+import setActiveScreen from "./setActiveScreen";
 
-const template = `
+export default () => {
+  const template = `
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -121,6 +124,11 @@ const template = `
   </footer>
 `;
 
-const statsElement = createElement(template);
+  const statsElement = createElement(template);
 
-export default statsElement;
+  const backButton = statsElement.querySelector(`.header__back`);
+  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+
+  return statsElement;
+
+}

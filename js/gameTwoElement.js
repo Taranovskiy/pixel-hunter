@@ -1,6 +1,10 @@
 import createElement from './createElement';
+import greetingElement from "./greetingElement";
+import setActiveScreen from "./setActiveScreen";
+import gameThreeElement from './gameThreeElement';
 
-const template = `
+export default () => {
+  const template = `
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -57,6 +61,17 @@ const template = `
   </footer>
 `;
 
-const gameTwoElement = createElement(template);
+  const gameTwoElement = createElement(template);
 
-export default gameTwoElement;
+  const backButton = gameTwoElement.querySelector(`.header__back`);
+  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+
+  const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
+  radioInputs.forEach((item) => {
+    item.addEventListener('change', () => setActiveScreen(gameThreeElement()));
+  });
+
+  return gameTwoElement;
+}
+
+
