@@ -24,8 +24,9 @@ export default () => {
   const introElement = createElement(template);
 
   const asteriskButton = introElement.querySelector(`.intro__asterisk`);
-  asteriskButton.addEventListener('click', () => setActiveScreen(greetingElement()));
+  asteriskButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
   return introElement;
-}
+};
+
 

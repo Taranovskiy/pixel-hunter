@@ -127,8 +127,8 @@ export default () => {
   const statsElement = createElement(template);
 
   const backButton = statsElement.querySelector(`.header__back`);
-  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+  backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
   return statsElement;
+};
 
-}

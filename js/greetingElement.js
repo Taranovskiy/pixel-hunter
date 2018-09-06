@@ -32,9 +32,7 @@ export default () => {
   const greetingElement = createElement(template);
 
   const continueButton = greetingElement.querySelector(`.greeting__continue`);
-  continueButton.addEventListener(`click`, () => { console.log(rulesElement()); setActiveScreen(rulesElement()); });
+  continueButton.addEventListener(`click`, () => setActiveScreen(rulesElement()));
 
   return greetingElement;
-}
-
-
+};

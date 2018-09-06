@@ -75,12 +75,12 @@ export default () => {
   const gameOneElement = createElement(template);
 
   const backButton = gameOneElement.querySelector(`.header__back`);
-  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+  backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
   const radioInputs = gameOneElement.querySelectorAll(`input[type="radio"]`);
   let count = 0;
   radioInputs.forEach((item) => {
-    item.addEventListener('change', () => {
+    item.addEventListener(`change`, () => {
       count++;
       if (count === 2) {
         setActiveScreen(gameTwoElement());
@@ -89,5 +89,5 @@ export default () => {
   });
 
   return gameOneElement;
-}
+};
 

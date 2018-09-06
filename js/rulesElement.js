@@ -44,12 +44,15 @@ export default () => {
   const rulesElement = createElement(template);
 
   const backButton = rulesElement.querySelector(`.header__back`);
-  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+  backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
   const inputField = rulesElement.querySelector(`.rules__input`);
   const continueButton = rulesElement.querySelector(`button.rules__button`);
-  inputField.addEventListener('input', () => continueButton.disabled = !inputField.value);
-  continueButton.addEventListener('click', () => setActiveScreen(gameOneElement()));
+  inputField.addEventListener(`input`, () => {
+    continueButton.disabled = !inputField.value;
+  });
+  continueButton.addEventListener(`click`, () => setActiveScreen(gameOneElement()));
 
   return rulesElement;
-}
+};
+

@@ -63,14 +63,14 @@ export default () => {
   const gameThreeElement = createElement(template);
 
   const backButton = gameThreeElement.querySelector(`.header__back`);
-  backButton.addEventListener('click', () => { setActiveScreen(greetingElement()) });
+  backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
   const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
   gameOption.forEach((item) => {
-    item.addEventListener('click', () => setActiveScreen(statsElement()));
+    item.addEventListener(`click`, () => setActiveScreen(statsElement()));
   });
 
   return gameThreeElement;
-}
+};
 
 
