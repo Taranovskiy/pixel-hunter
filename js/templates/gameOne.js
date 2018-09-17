@@ -1,8 +1,7 @@
-import createElement from './createElement';
-import greetingElement from "./greetingElement";
-import setActiveScreen from "./setActiveScreen";
-import statsElement from "./statsElement";
-
+import createElement from '../createElement';
+import greetingElement from "./greeting";
+import setActiveScreen from "../setActiveScreen";
+import gameTwoElement from './gameTwo';
 
 export default () => {
   const template = `
@@ -21,16 +20,29 @@ export default () => {
     </div>
   </header>
   <div class="game">
-    <p class="game__task">Найдите рисунок среди изображений</p>
-    <form class="game__content  game__content--triple">
+    <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
+    <form class="game__content">
       <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-      <div class="game__option  game__option--selected">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
+        <label class="game__answer game__answer--photo">
+          <input name="question1" type="radio" value="photo">
+          <span>Фото</span>
+        </label>
+        <label class="game__answer game__answer--paint">
+          <input name="question1" type="radio" value="paint">
+          <span>Рисунок</span>
+        </label>
       </div>
       <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src="http://placehold.it/468x458" alt="Option 2" width="468" height="458">
+        <label class="game__answer  game__answer--photo">
+          <input name="question2" type="radio" value="photo">
+          <span>Фото</span>
+        </label>
+        <label class="game__answer  game__answer--paint">
+          <input name="question2" type="radio" value="paint">
+          <span>Рисунок</span>
+        </label>
       </div>
     </form>
     <div class="stats">
@@ -39,11 +51,11 @@ export default () => {
         <li class="stats__result stats__result--slow"></li>
         <li class="stats__result stats__result--fast"></li>
         <li class="stats__result stats__result--correct"></li>
-        <li class="stats__result stats__result--wrong"></li>
         <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--slow"></li>
         <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--fast"></li>
+        <li class="stats__result stats__result--unknown"></li>
+        <li class="stats__result stats__result--unknown"></li>
+        <li class="stats__result stats__result--unknown"></li>
         <li class="stats__result stats__result--unknown"></li>
       </ul>
     </div>
@@ -60,17 +72,22 @@ export default () => {
   </footer>
 `;
 
-  const gameThreeElement = createElement(template);
+  const gameOneElement = createElement(template);
 
-  const backButton = gameThreeElement.querySelector(`.header__back`);
+  const backButton = gameOneElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
-  const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
-  gameOption.forEach((item) => {
-    item.addEventListener(`click`, () => setActiveScreen(statsElement()));
+  const radioInputs = gameOneElement.querySelectorAll(`input[type="radio"]`);
+  let count = 0;
+  radioInputs.forEach((item) => {
+    item.addEventListener(`change`, () => {
+      count++;
+      if (count === 2) {
+        setActiveScreen(gameTwoElement());
+      }
+    });
   });
 
-  return gameThreeElement;
+  return gameOneElement;
 };
-
 

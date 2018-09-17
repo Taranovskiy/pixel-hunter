@@ -1,6 +1,6 @@
-import setActiveScreen from './setActiveScreen';
-import createElement from './createElement';
-import rulesElement from './rulesElement';
+import setActiveScreen from '../setActiveScreen';
+import createElement from '../createElement';
+import rulesElement from './rules';
 
 export default () => {
   const template = `

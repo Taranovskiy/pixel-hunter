@@ -1,6 +1,6 @@
-import createElement from './createElement';
-import greetingElement from "./greetingElement";
-import setActiveScreen from "./setActiveScreen";
+import createElement from '../createElement';
+import greetingElement from "./greeting";
+import setActiveScreen from "../setActiveScreen";
 
 export default () => {
   const template = `
