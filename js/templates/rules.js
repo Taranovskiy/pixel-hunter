@@ -1,18 +1,12 @@
 import setActiveScreen from '../setActiveScreen';
 import createElement from '../createElement';
 import greetingElement from './greeting';
+import header from './header';
 import gameOneElement from './gameOne';
 
 export default () => {
   const template = `
-    <header class="header">
-      <div class="header__back">
-        <span class="back">
-          <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-          <img src="img/logo_small.png" width="101" height="44">
-        </span>
-      </div>
-    </header>
+    ${header}
     <div class="rules">
       <h1 class="rules__title">Правила</h1>
       <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -25,7 +19,7 @@ export default () => {
         Готовы?
       </p>
       <form class="rules__form">
-        <input class="rules__input" type="text" placeholder="Ваше Имя">
+        <input class="rules__input" type="text" placeholder="Ваше Имя" autofocus>
         <button class="rules__button  continue" type="submit" disabled>Go!</button>
       </form>
     </div>

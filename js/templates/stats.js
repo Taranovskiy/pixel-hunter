@@ -1,17 +1,11 @@
 import createElement from '../createElement';
 import greetingElement from "./greeting";
+import header from "./header";
 import setActiveScreen from "../setActiveScreen";
 
 export default () => {
   const template = `
-  <header class="header">
-    <div class="header__back">
-      <span class="back">
-        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.png" width="101" height="44">
-      </span>
-    </div>
-  </header>
+  ${header}
   <div class="result">
     <h1>Победа!</h1>
     <table class="result__table">
