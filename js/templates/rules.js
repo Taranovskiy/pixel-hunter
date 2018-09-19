@@ -3,10 +3,11 @@ import createElement from '../createElement';
 import greetingElement from './greeting';
 import header from './header';
 import gameOneElement from './gameOne';
+import {initialState} from "../data";
 
 export default () => {
   const template = `
-    ${header}
+    ${header(initialState)}
     <div class="rules">
       <h1 class="rules__title">Правила</h1>
       <p class="rules__description">Угадай 10 раз для каждого изображения фото <img

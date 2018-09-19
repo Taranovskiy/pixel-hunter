@@ -2,11 +2,12 @@ import createElement from '../createElement';
 import greetingElement from "./greeting";
 import header from "./header";
 import stats from "./stats";
+import {initialState} from "../data";
 import setActiveScreen from "../setActiveScreen";
 
 export default () => {
   const template = `
-  ${header}
+  ${header(initialState)}
   <div class="result">
     <h1>Победа!</h1>
     <table class="result__table">

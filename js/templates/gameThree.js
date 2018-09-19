@@ -2,13 +2,14 @@ import createElement from '../createElement';
 import greetingElement from "./greeting";
 import setActiveScreen from "../setActiveScreen";
 import header from "./header";
+import {initialState} from "../data";
 import stats from "./stats";
 import statsElement from "./statsPage";
 
 
 export default () => {
   const template = `
-  ${header}
+  ${header(initialState)}
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
