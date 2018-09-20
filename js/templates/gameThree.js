@@ -7,16 +7,18 @@ import stats from "./stats";
 import statsElement from "./statsPage";
 import footer from "./footer";
 
+const level = data.levels.levelThree;
+const initialState = data.initialState;
 
 export default () => {
-  const answerContent = data.levels.levelThree.answerOptions.map((answer, index) => `
+  const answerContent = level.answerOptions.map((answer, index) => `
     <div class="game__option">
       <img src=${answer} alt="Option ${index}" width="304" height="455">
     </div>
   `).join(``);
 
   const template = `
-  ${header(data.initialState)}
+  ${header(initialState)}
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">

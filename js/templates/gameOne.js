@@ -7,8 +7,11 @@ import stats from "./stats";
 import gameTwoElement from './gameTwo';
 import footer from "./footer";
 
+const level = data.levels.levelOne;
+const initialState = data.initialState;
+
 export default () => {
-  const answerContent = data.levels.levelOne.answerOptions.map((answer, index) => `
+  const answerContent = level.answerOptions.map((answer, index) => `
     <div class="game__option">
       <img src=${answer} alt="Option ${index + 1}" width="468" height="458">
       <label class="game__answer game__answer--photo">
@@ -23,9 +26,9 @@ export default () => {
   `).join(``);
 
   const template = `
-    ${header(data.initialState)}
+    ${header(initialState)}
     <div class="game">
-      <p class="game__task">${data.levels.levelOne.task}</p>
+      <p class="game__task">${level.task}</p>
       <form class="game__content">
         ${answerContent}
       </form>

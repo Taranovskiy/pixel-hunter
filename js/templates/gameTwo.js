@@ -7,8 +7,11 @@ import stats from "./stats";
 import gameThreeElement from './gameThree';
 import footer from "./footer";
 
+const level = data.levels.levelTwo;
+const initialState = data.initialState;
+
 export default () => {
-  const answerContent = data.levels.levelTwo.answerOptions.map((answer, index) => `
+  const answerContent = level.answerOptions.map((answer, index) => `
     <div class="game__option">
       <img src=${answer} alt="Option ${index}" width="705" height="455">
       <label class="game__answer  game__answer--photo">
@@ -23,7 +26,7 @@ export default () => {
   `).join(``);
 
   const template = `
-  ${header(data.initialState)}
+  ${header(initialState)}
   <div class="game">
     <p class="game__task">Угадай, фото или рисунок?</p>
     <form class="game__content  game__content--wide">
