@@ -2,26 +2,24 @@ import createElement from '../createElement';
 import greetingElement from "./greeting";
 import setActiveScreen from "../setActiveScreen";
 import header from "./header";
-import {initialState} from "../data";
+import * as data from "../data";
 import stats from "./stats";
 import statsElement from "./statsPage";
 
 
 export default () => {
+  const answerContent = data.levels.levelThree.answerOptions.map((answer, index) => `
+    <div class="game__option">
+      <img src=${answer} alt="Option ${index}" width="304" height="455">
+    </div>
+  `).join('');
+
   const template = `
-  ${header(initialState)}
+  ${header(data.initialState)}
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
-      <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-      <div class="game__option  game__option--selected">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-      <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
+      ${answerContent}
     </form>
     <div class="stats">
       ${stats}

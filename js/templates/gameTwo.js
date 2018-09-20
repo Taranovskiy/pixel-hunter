@@ -2,27 +2,31 @@ import createElement from '../createElement';
 import greetingElement from "./greeting";
 import setActiveScreen from "../setActiveScreen";
 import header from "./header";
-import {initialState} from "../data";
+import * as data from "../data";
 import stats from "./stats";
 import gameThreeElement from './gameThree';
 
 export default () => {
+  const answerContent = data.levels.levelTwo.answerOptions.map((answer, index) => `
+    <div class="game__option">
+      <img src=${answer} alt="Option ${index}" width="705" height="455">
+      <label class="game__answer  game__answer--photo">
+        <input name="question${index}" type="radio" value="photo">
+        <span>Фото</span>
+      </label>
+      <label class="game__answer  game__answer--wide  game__answer--paint">
+        <input name="question${index}" type="radio" value="paint">
+        <span>Рисунок</span>
+      </label>
+    </div>
+  `).join('');
+
   const template = `
-  ${header(initialState)}
+  ${header(data.initialState)}
   <div class="game">
     <p class="game__task">Угадай, фото или рисунок?</p>
     <form class="game__content  game__content--wide">
-      <div class="game__option">
-        <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">
-        <label class="game__answer  game__answer--photo">
-          <input name="question1" type="radio" value="photo">
-          <span>Фото</span>
-        </label>
-        <label class="game__answer  game__answer--wide  game__answer--paint">
-          <input name="question1" type="radio" value="paint">
-          <span>Рисунок</span>
-        </label>
-      </div>
+      ${answerContent}
     </form>
     <div class="stats">
       ${stats}
