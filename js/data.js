@@ -27,3 +27,16 @@ export const levels = {
   }
 };
 
+export const stats = [
+  `wrong`,
+  `slow`,
+  `fast`,
+  `correct`,
+  `unknown`,
+  `unknown`,
+  `unknown`,
+  `unknown`,
+  `unknown`,
+  `unknown`,
+];
+
