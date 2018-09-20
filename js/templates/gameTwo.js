@@ -20,7 +20,7 @@ export default () => {
         <span>Рисунок</span>
       </label>
     </div>
-  `).join('');
+  `).join(``);
 
   const template = `
   ${header(data.initialState)}

@@ -1,7 +1,7 @@
 import setActiveScreen from '../setActiveScreen';
 import createElement from '../createElement';
 import greetingElement from './greeting';
-import footer from './footer'
+import footer from './footer';
 
 export default () => {
   const template = `

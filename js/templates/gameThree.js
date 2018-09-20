@@ -13,7 +13,7 @@ export default () => {
     <div class="game__option">
       <img src=${answer} alt="Option ${index}" width="304" height="455">
     </div>
-  `).join('');
+  `).join(``);
 
   const template = `
   ${header(data.initialState)}
