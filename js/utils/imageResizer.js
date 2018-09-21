@@ -10,4 +10,4 @@ export default (img) => {
   } else {
     img.height = parentHeight;
   }
-}
+};
