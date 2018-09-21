@@ -2,7 +2,7 @@ import createElement from '../createElement';
 import greetingElement from "./greeting";
 import setActiveScreen from "../setActiveScreen";
 import header from "./header";
-import * as data from "../data";
+import * as data from "../data/data";
 import imageResizer from "../utils/imageResizer"
 import stats from "./stats";
 import gameTwoElement from './gameTwo';

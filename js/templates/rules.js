@@ -3,7 +3,7 @@ import createElement from '../createElement';
 import greetingElement from './greeting';
 import header from './header';
 import gameOneElement from './gameOne';
-import {initialState} from "../data";
+import {initialState} from "../data/data";
 import footer from "./footer";
 
 export default () => {

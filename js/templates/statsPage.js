@@ -2,7 +2,7 @@ import createElement from '../createElement';
 import greetingElement from "./greeting";
 import header from "./header";
 import stats from "./stats";
-import {initialState} from "../data";
+import {initialState} from "../data/data";
 import setActiveScreen from "../setActiveScreen";
 import footer from "./footer";
 
