@@ -1,6 +1,8 @@
 export const initialState = Object.freeze({
   time: 0,
   lives: 3,
+  questionNumber: 1,
+  answerCorrectAmount: 0,
 });
 
 export const levels = Object.freeze({
