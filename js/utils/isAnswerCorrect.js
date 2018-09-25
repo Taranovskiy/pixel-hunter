@@ -1,3 +1,3 @@
-export default (answer) => {
-  return false;
-}
+// export default (answer) => {
+//   return answer.type ===
+// };
