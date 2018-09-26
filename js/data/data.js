@@ -7,20 +7,20 @@ export const initialState = Object.freeze({
 
 export const paintings = [
   // People
-  `1-paint https://k42.kn3.net/CF42609C8.jpg`,
+  `https://k42.kn3.net/CF42609C8.jpg`,
   // Animals
-  `2-paint https://k42.kn3.net/D2F0370D6.jpg`,
+  `https://k42.kn3.net/D2F0370D6.jpg`,
   // Nature
-  `3-paint https://k32.kn3.net/5C7060EC5.jpg`,
+  `https://k32.kn3.net/5C7060EC5.jpg`,
 ];
 
 export const photos = [
   // People
-  `1-photo http://i.imgur.com/1KegWPz.jpg`,
+  `http://i.imgur.com/1KegWPz.jpg`,
   // Animals
-  `2-photo https://i.imgur.com/DiHM5Zb.jpg`,
+  `https://i.imgur.com/DiHM5Zb.jpg`,
   // Nature
-  `3-photo http://i.imgur.com/DKR1HtB.jpg`,
+  `http://i.imgur.com/DKR1HtB.jpg`,
 ];
 
 export const levelsTask = {

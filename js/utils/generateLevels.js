@@ -11,10 +11,14 @@ const normalLengthArray = (arr, minLength) => {
 };
 
 const levelsTask = data.levelsTask;
-const paintings = normalLengthArray(data.paintings, QUESTIONS_AMOUNT);
-paintings.type = `painting`;
-const photos = normalLengthArray(data.photos, QUESTIONS_AMOUNT);
-photos.type = `photo`;
+const paintings = {
+  urls: normalLengthArray(data.paintings, QUESTIONS_AMOUNT),
+  type: `painting`
+};
+const photos = {
+  urls: normalLengthArray(data.photos, QUESTIONS_AMOUNT),
+  type: `photo`
+};
 
 export default () => {
   let levels = [];
@@ -27,12 +31,12 @@ export default () => {
       case 1:
         answerOptions = [
           {
-            url: paintings[i],
-            type: `painting`,
+            url: paintings.urls[i],
+            type: paintings.type,
           },
           {
-            url: photos[i],
-            type: `photo`,
+            url: photos.urls[i],
+            type: photos.type,
           }
         ];
 
@@ -49,7 +53,7 @@ export default () => {
         let randType = (i % 2 === 0) ? paintings : photos;
         answerOptions = [
           {
-            url: randType[i],
+            url: randType.urls[i],
             type: randType.type,
           },
         ];
@@ -65,16 +69,16 @@ export default () => {
       case 3:
         answerOptions = [
           {
-            url: paintings[i],
-            type: `painting`,
+            url: paintings.urls[i],
+            type: paintings.type,
           },
           {
-            url: photos[i],
-            type: `photo`,
+            url: photos.urls[i],
+            type: photos.type,
           },
           {
-            url: photos[(i > 0) ? (i - 1) : (i + 1)],
-            type: `photo`,
+            url: photos.urls[(i > 0) ? (i - 1) : (i + 1)],
+            type: photos.type,
           },
         ];
 
