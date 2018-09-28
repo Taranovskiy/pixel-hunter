@@ -1,12 +1,16 @@
-import setActiveScreen from '../setActiveScreen';
-import createElement from '../createElement';
+import setActiveScreen from '../utils/setActiveScreen';
+import createElement from '../utils/createElement';
 import greetingElement from './greeting';
 import header from './header';
-import gameOneElement from './gameOne';
-import {initialState} from "../data/data";
+import * as data from "../data/data";
 import footer from "./footer";
+import screensSelection from "../utils/screensSelection";
+import generateLevels from "../utils/generateLevels";
+
+const initialState = data.initialState;
 
 export default () => {
+  const levels = generateLevels();
   const template = `
     ${header(initialState)}
     <div class="rules">
@@ -38,7 +42,8 @@ export default () => {
   inputField.addEventListener(`input`, () => {
     continueButton.disabled = !inputField.value;
   });
-  continueButton.addEventListener(`click`, () => setActiveScreen(gameOneElement()));
+
+  continueButton.addEventListener(`click`, () => setActiveScreen(screensSelection(initialState, levels)));
 
   return rulesElement;
 };

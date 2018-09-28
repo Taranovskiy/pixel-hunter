@@ -1,9 +1,9 @@
-import createElement from '../createElement';
+import createElement from '../utils/createElement';
 import greetingElement from "./greeting";
 import header from "./header";
 import stats from "./stats";
 import {initialState} from "../data/data";
-import setActiveScreen from "../setActiveScreen";
+import setActiveScreen from "../utils/setActiveScreen";
 import footer from "./footer";
 
 export default () => {

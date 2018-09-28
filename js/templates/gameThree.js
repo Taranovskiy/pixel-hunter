@@ -1,27 +1,25 @@
-import createElement from '../createElement';
+import createElement from '../utils/createElement';
 import greetingElement from "./greeting";
-import setActiveScreen from "../setActiveScreen";
+import setActiveScreen from "../utils/setActiveScreen";
 import header from "./header";
-import * as data from "../data/data";
 import stats from "./stats";
-import statsElement from "./statsPage";
 import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
 
-const level = data.levels.levelThree;
-const initialState = data.initialState;
+export default (state, levels) => {
+  const levelNum = state.level;
+  const level = levels[levelNum - 1];
 
-export default () => {
   const answerContent = level.answerOptions.map((answer, index) => `
     <div class="game__option">
-      <img src=${answer} alt="Option ${index}">
+      <img src=${answer.url} alt="Option ${index + 1}">
     </div>
   `).join(``);
 
   const template = `
-  ${header(initialState)}
+  ${header(state)}
   <div class="game">
-    <p class="game__task">Найдите рисунок среди изображений</p>
+    <p class="game__task">${level.task}</p>
     <form class="game__content  game__content--triple">
       ${answerContent}
     </form>
@@ -44,10 +42,10 @@ export default () => {
   const backButton = gameThreeElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
-  const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
-  gameOption.forEach((item) => {
-    item.addEventListener(`click`, () => setActiveScreen(statsElement()));
-  });
+  // const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
+  // gameOption.forEach((item) => {
+  //   item.addEventListener(`click`, () => setActiveScreen(statsElement()));
+  // });
 
   return gameThreeElement;
 };

@@ -1,9 +1,10 @@
 export const initialState = Object.freeze({
   time: 0,
   lives: 3,
-  questionNumber: 1,
+  level: 1,
   answerCorrectAmount: 0,
 });
+
 
 export const paintings = [
   // People
@@ -29,7 +30,7 @@ export const levelsTask = {
   levelThree: `Найдите рисунок среди изображений`,
 };
 
-export const levels = Object.freeze({
+export const levelsOld = Object.freeze({
   levelOne: {
     task: `Угадайте для каждого изображения фото или рисунок?`,
     answerOptions: [

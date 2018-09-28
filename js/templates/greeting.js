@@ -1,5 +1,5 @@
-import setActiveScreen from '../setActiveScreen';
-import createElement from '../createElement';
+import setActiveScreen from '../utils/setActiveScreen';
+import createElement from '../utils/createElement';
 import rulesElement from './rules';
 import footer from "./footer";
 

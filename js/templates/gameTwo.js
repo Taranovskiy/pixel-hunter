@@ -1,20 +1,19 @@
-import createElement from '../createElement';
+import createElement from '../utils/createElement';
 import greetingElement from "./greeting";
-import setActiveScreen from "../setActiveScreen";
+import setActiveScreen from "../utils/setActiveScreen";
 import header from "./header";
-import * as data from "../data/data";
 import stats from "./stats";
-import gameThreeElement from './gameThree';
 import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
 
-const level = data.levels.levelTwo;
-const initialState = data.initialState;
 
-export default () => {
+export default (state, levels) => {
+  const levelNum = state.level;
+  const level = levels[levelNum - 1];
+
   const answerContent = level.answerOptions.map((answer, index) => `
     <div class="game__option">
-      <img src=${answer} alt="Option ${index}">
+      <img src=${answer.url} alt="Option ${index + 1}">
       <label class="game__answer  game__answer--photo">
         <input name="question${index}" type="radio" value="photo">
         <span>Фото</span>
@@ -27,9 +26,9 @@ export default () => {
   `).join(``);
 
   const template = `
-  ${header(initialState)}
+  ${header(state)}
   <div class="game">
-    <p class="game__task">Угадай, фото или рисунок?</p>
+    <p class="game__task">${level.task}</p>
     <form class="game__content  game__content--wide">
       ${answerContent}
     </form>
@@ -52,10 +51,10 @@ export default () => {
   const backButton = gameTwoElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
-  const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
-  radioInputs.forEach((item) => {
-    item.addEventListener(`change`, () => setActiveScreen(gameThreeElement()));
-  });
+  // const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
+  // radioInputs.forEach((item) => {
+  //   item.addEventListener(`change`, () => setActiveScreen(gameThreeElement()));
+  // });
 
   return gameTwoElement;
 };
