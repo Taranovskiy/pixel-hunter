@@ -5,6 +5,7 @@ import header from "./header";
 import stats from "./stats";
 import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
+import checkAnswer from "../utils/checkAnswer";
 
 export default (state, levels) => {
   const levelNum = state.level;
@@ -42,10 +43,10 @@ export default (state, levels) => {
   const backButton = gameThreeElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
-  // const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
-  // gameOption.forEach((item) => {
-  //   item.addEventListener(`click`, () => setActiveScreen(statsElement()));
-  // });
+  const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
+  gameOption.forEach((item) => {
+    item.addEventListener(`click`, () => setActiveScreen(checkAnswer(state, levels)));
+  });
 
   return gameThreeElement;
 };

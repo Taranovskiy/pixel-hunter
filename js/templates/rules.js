@@ -4,7 +4,7 @@ import greetingElement from './greeting';
 import header from './header';
 import * as data from "../data/data";
 import footer from "./footer";
-import screensSelection from "../utils/screensSelection";
+import selectScreen from "../utils/selectScreen";
 import generateLevels from "../utils/generateLevels";
 
 const initialState = data.initialState;
@@ -43,7 +43,7 @@ export default () => {
     continueButton.disabled = !inputField.value;
   });
 
-  continueButton.addEventListener(`click`, () => setActiveScreen(screensSelection(initialState, levels)));
+  continueButton.addEventListener(`click`, () => setActiveScreen(selectScreen(initialState, levels)));
 
   return rulesElement;
 };

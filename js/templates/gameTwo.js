@@ -5,6 +5,7 @@ import header from "./header";
 import stats from "./stats";
 import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
+import checkAnswer from "../utils/checkAnswer";
 
 
 export default (state, levels) => {
@@ -51,10 +52,10 @@ export default (state, levels) => {
   const backButton = gameTwoElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
-  // const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
-  // radioInputs.forEach((item) => {
-  //   item.addEventListener(`change`, () => setActiveScreen(gameThreeElement()));
-  // });
+  const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
+  radioInputs.forEach((item) => {
+    item.addEventListener(`change`, () => setActiveScreen(checkAnswer(state, levels)));
+  });
 
   return gameTwoElement;
 };

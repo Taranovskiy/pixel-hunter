@@ -5,6 +5,7 @@ import header from "./header";
 import imageResizer from "../utils/imageResizer";
 import stats from "./stats";
 import footer from "./footer";
+import checkAnswer from "../utils/checkAnswer";
 
 export default (state, levels) => {
   const levelNum = state.level;
@@ -50,16 +51,16 @@ export default (state, levels) => {
   const backButton = gameOneElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
 
-  // const radioInputs = gameOneElement.querySelectorAll(`input[type="radio"]`);
-  // let count = 0;
-  // radioInputs.forEach((item) => {
-  //   item.addEventListener(`change`, () => {
-  //     count++;
-  //     if (count === 2) {
-  //       setActiveScreen(gameTwoElement());
-  //     }
-  //   });
-  // });
+  const radioInputs = gameOneElement.querySelectorAll(`input[type="radio"]`);
+  let count = 0;
+  radioInputs.forEach((item) => {
+    item.addEventListener(`change`, () => {
+      count++;
+      if (count === 2) {
+        setActiveScreen(checkAnswer(state, levels));
+      }
+    });
+  });
 
   return gameOneElement;
 };

@@ -3,6 +3,7 @@ import gameTwo from "../templates/gameTwo";
 import gameThree from "../templates/gameThree";
 import statsPage from "../templates/statsPage";
 import {QUESTIONS_AMOUNT} from "../data/constants";
+import setActiveScreen from "./setActiveScreen";
 
 export default (state, levels) => {
   const levelNum = state.level;
@@ -10,7 +11,7 @@ export default (state, levels) => {
   let nextScreen;
 
   if (levelNum === QUESTIONS_AMOUNT) {
-    nextScreen = statsPage(state);
+    nextScreen = setActiveScreen(statsPage(state));
   }
 
   switch (level.levelType) {
