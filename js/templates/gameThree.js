@@ -7,7 +7,7 @@ import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
 import checkAnswer from "../utils/checkAnswer";
 
-export default (state, levels) => {
+export default (state, levels, currentLevel) => {
   const levelNum = state.level;
   const level = levels[levelNum - 1];
 
@@ -45,7 +45,10 @@ export default (state, levels) => {
 
   const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
   gameOption.forEach((item) => {
-    item.addEventListener(`click`, () => setActiveScreen(checkAnswer(state, levels)));
+    item.addEventListener(`click`, (evt) => {
+      const answer = evt.currentTarget.querySelector(`img`);
+      setActiveScreen(checkAnswer(state, levels, currentLevel, answer));
+    });
   });
 
   return gameThreeElement;

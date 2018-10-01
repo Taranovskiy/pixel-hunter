@@ -13,7 +13,7 @@ const normalLengthArray = (arr, minLength) => {
 const levelsTask = data.levelsTask;
 const paintings = {
   urls: normalLengthArray(data.paintings, QUESTIONS_AMOUNT),
-  type: `painting`
+  type: `paint`
 };
 const photos = {
   urls: normalLengthArray(data.photos, QUESTIONS_AMOUNT),

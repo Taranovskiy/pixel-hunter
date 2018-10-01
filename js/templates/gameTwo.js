@@ -8,7 +8,7 @@ import imageResizer from "../utils/imageResizer";
 import checkAnswer from "../utils/checkAnswer";
 
 
-export default (state, levels) => {
+export default (state, levels, currentLevel) => {
   const levelNum = state.level;
   const level = levels[levelNum - 1];
 
@@ -54,7 +54,10 @@ export default (state, levels) => {
 
   const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
   radioInputs.forEach((item) => {
-    item.addEventListener(`change`, () => setActiveScreen(checkAnswer(state, levels)));
+    item.addEventListener(`change`, (evt) => {
+      const answer = evt.currentTarget.value;
+      setActiveScreen(checkAnswer(state, levels, currentLevel, answer));
+    });
   });
 
   return gameTwoElement;

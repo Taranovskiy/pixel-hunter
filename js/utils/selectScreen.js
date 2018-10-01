@@ -6,24 +6,24 @@ import {QUESTIONS_AMOUNT} from "../data/constants";
 
 export default (state, levels) => {
   const levelNum = state.level;
-  const level = levels[levelNum - 1];
+  const currentLevel = levels[levelNum - 1];
   let nextScreen;
 
   if (levelNum > QUESTIONS_AMOUNT) {
     return statsPage(state);
   }
 
-  switch (level.levelType) {
+  switch (currentLevel.levelType) {
     case 1:
-      nextScreen = gameOne(state, levels);
+      nextScreen = gameOne(state, levels, currentLevel);
       break;
 
     case 2:
-      nextScreen = gameTwo(state, levels);
+      nextScreen = gameTwo(state, levels, currentLevel);
       break;
 
     case 3:
-      nextScreen = gameThree(state, levels);
+      nextScreen = gameThree(state, levels,currentLevel);
       break;
   }
 

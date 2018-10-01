@@ -7,7 +7,7 @@ import stats from "./stats";
 import footer from "./footer";
 import checkAnswer from "../utils/checkAnswer";
 
-export default (state, levels) => {
+export default (state, levels, currentLevel) => {
   const levelNum = state.level;
   const level = levels[levelNum - 1];
 
@@ -53,11 +53,17 @@ export default (state, levels) => {
 
   const radioInputs = gameOneElement.querySelectorAll(`input[type="radio"]`);
   let count = 0;
+  const answer = [];
   radioInputs.forEach((item) => {
-    item.addEventListener(`change`, () => {
+    item.addEventListener(`change`, (evt) => {
+      const answerItem = {};
+      const targetOption = evt.currentTarget.parentElement.parentElement;
+      answerItem.url = targetOption.querySelector(`img`).src;
+      answerItem.type = evt.currentTarget.value;
+      answer.push(answerItem);
       count++;
       if (count === 2) {
-        setActiveScreen(checkAnswer(state, levels));
+        setActiveScreen(checkAnswer(state, levels, currentLevel, answer));
       }
     });
   });
