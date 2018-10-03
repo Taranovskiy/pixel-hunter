@@ -12,8 +12,13 @@ export const initialState = Object.freeze({
   time: 0,
   lives: 3,
   level: 1,
-  answerCorrectAmount: 0,
-  stats: generateInitialStats(QUESTIONS_AMOUNT, `unknown`)
+  stats: generateInitialStats(QUESTIONS_AMOUNT, `unknown`),
+  score: {
+    correct: 0,
+    wrong: 0,
+    fast: 0,
+    slow: 0
+  }
 });
 
 export const paintings = [
