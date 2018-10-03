@@ -14,7 +14,7 @@ export default (state) => {
         <tr>
           <td class="result__number">1.</td>
           <td colspan="2">
-            ${stats}
+            ${stats(state)}
           </td>
           <td class="result__points">×&nbsp;100</td>
           <td class="result__total">900</td>
@@ -48,7 +48,7 @@ export default (state) => {
         <tr>
           <td class="result__number">2.</td>
           <td>
-            ${stats}
+            ${stats(state)}
           </td>
           <td class="result__total"></td>
           <td class="result__total  result__total--final">fail</td>
@@ -58,7 +58,7 @@ export default (state) => {
         <tr>
           <td class="result__number">3.</td>
           <td colspan="2">
-            ${stats}
+            ${stats(state)}
           </td>
           <td class="result__points">×&nbsp;100</td>
           <td class="result__total">900</td>

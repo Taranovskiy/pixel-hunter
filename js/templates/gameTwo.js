@@ -6,6 +6,7 @@ import stats from "./stats";
 import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
 import checkAnswer from "../utils/checkAnswer";
+import selectScreen from "../utils/selectScreen";
 
 
 export default (state, levels, currentLevel) => {
@@ -34,7 +35,7 @@ export default (state, levels, currentLevel) => {
       ${answerContent}
     </form>
     <div class="stats">
-      ${stats}
+      ${stats(state)}
     </div>
   </div>
   ${footer}
@@ -55,8 +56,11 @@ export default (state, levels, currentLevel) => {
   const radioInputs = gameTwoElement.querySelectorAll(`input[type="radio"]`);
   radioInputs.forEach((item) => {
     item.addEventListener(`change`, (evt) => {
+      const answerTime = 25;
       const answer = evt.currentTarget.value;
-      setActiveScreen(checkAnswer(state, levels, currentLevel, answer));
+      const newState = checkAnswer(state, levels, currentLevel, answerTime, answer);
+      const nextScreen = selectScreen(newState, levels);
+      setActiveScreen(nextScreen);
     });
   });
 

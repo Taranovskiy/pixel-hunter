@@ -6,6 +6,7 @@ import stats from "./stats";
 import footer from "./footer";
 import imageResizer from "../utils/imageResizer";
 import checkAnswer from "../utils/checkAnswer";
+import selectScreen from "../utils/selectScreen";
 
 export default (state, levels, currentLevel) => {
   const levelNum = state.level;
@@ -25,7 +26,7 @@ export default (state, levels, currentLevel) => {
       ${answerContent}
     </form>
     <div class="stats">
-      ${stats}
+      ${stats(state)}
     </div>
   </div>
   ${footer}
@@ -46,8 +47,11 @@ export default (state, levels, currentLevel) => {
   const gameOption = gameThreeElement.querySelectorAll(`.game__option`);
   gameOption.forEach((item) => {
     item.addEventListener(`click`, (evt) => {
+      const answerTime = 15;
       const answer = evt.currentTarget.querySelector(`img`);
-      setActiveScreen(checkAnswer(state, levels, currentLevel, answer));
+      const newState = checkAnswer(state, levels, currentLevel, answerTime, answer);
+      const nextScreen = selectScreen(newState, levels);
+      setActiveScreen(nextScreen);
     });
   });
 

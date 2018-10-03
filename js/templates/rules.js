@@ -43,7 +43,8 @@ export default () => {
     continueButton.disabled = !inputField.value;
   });
 
-  continueButton.addEventListener(`click`, () => setActiveScreen(selectScreen(initialState, levels)));
+  const nextScreen = selectScreen(initialState, levels);
+  continueButton.addEventListener(`click`, () => setActiveScreen(nextScreen));
 
   return rulesElement;
 };

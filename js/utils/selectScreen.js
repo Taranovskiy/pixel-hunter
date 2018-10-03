@@ -23,7 +23,7 @@ export default (state, levels) => {
       break;
 
     case 3:
-      nextScreen = gameThree(state, levels,currentLevel);
+      nextScreen = gameThree(state, levels, currentLevel);
       break;
   }
 

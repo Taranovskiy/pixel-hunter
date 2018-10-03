@@ -1,8 +1,19 @@
+import {QUESTIONS_AMOUNT} from "./constants";
+
+const generateInitialStats = (questionAmount, element) => {
+  const stats = [];
+  for (let i = 0; i < questionAmount; i++) {
+    stats[i] = element;
+  }
+  return stats;
+};
+
 export const initialState = Object.freeze({
   time: 0,
   lives: 3,
   level: 1,
   answerCorrectAmount: 0,
+  stats: generateInitialStats(QUESTIONS_AMOUNT, `unknown`)
 });
 
 
@@ -23,17 +34,4 @@ export const levelsTask = {
   levelTwo: `Угадай, фото или рисунок?`,
   levelThree: `Найдите рисунок среди изображений`,
 };
-
-export const stats = [
-  `wrong`,
-  `slow`,
-  `fast`,
-  `correct`,
-  `unknown`,
-  `unknown`,
-  `unknown`,
-  `unknown`,
-  `unknown`,
-  `unknown`,
-];
 

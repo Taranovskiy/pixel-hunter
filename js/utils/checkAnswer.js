@@ -1,31 +1,22 @@
-import selectScreen from "./selectScreen";
 import increaseLevel from "./increaseLevel";
+import isCorrect from "./isCorrect";
 
-export default (state, levels, currentLevel, answer) => {
-  let isCorrect;
-  const levelOptions = currentLevel.answerOptions;
+export default (state, levels, currentLevel, answerTime, answer) => {
+  const isCorrectAnswer = isCorrect(currentLevel, answer);
+  const newState = Object.assign({}, state);
+  let statsItemValue;
 
-  switch (currentLevel.levelType) {
-    case 1:
-      isCorrect = !(answer.some((answer) => {
-        const correct = levelOptions.find((option) => answer.url === option.url);
-        return (answer.type !== correct.type);
-      }));
-      console.log(isCorrect ? `ПРАВИЛЬНО!!!` : `НЕ ПРАВИЛЬНО!!!`);
-      break;
-
-    case 2:
-      isCorrect = (answer === currentLevel.answerOptions[0].type);
-      console.log(isCorrect ? `ПРАВИЛЬНО!!!` : `НЕ ПРАВИЛЬНО!!!`);
-      break;
-
-    case 3:
-      const answerType = levelOptions.find((option) => option.url === answer.src).type;
-      isCorrect = (answerType === `paint`);
-      console.log(answerType);
-      console.log(isCorrect ? `ПРАВИЛЬНО!!!` : `НЕ ПРАВИЛЬНО!!!`);
+  if \(!isCorrectAnswer) {
+    statsItemValue = `wrong`;
+  } else if (isCorrectAnswer && (answerTime < 10)) {
+    statsItemValue = `fast`;
+  } else if (isCorrectAnswer && (answerTime > 20)) {
+    statsItemValue = `slow`;
+  } else {
+    statsItemValue = `correct`;
   }
 
-  const newState = increaseLevel(state);
-  return selectScreen(newState, levels);
+  newState.stats[state.level - 1] = statsItemValue;
+
+  return increaseLevel(newState);
 };

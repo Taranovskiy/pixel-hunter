@@ -6,6 +6,7 @@ import imageResizer from "../utils/imageResizer";
 import stats from "./stats";
 import footer from "./footer";
 import checkAnswer from "../utils/checkAnswer";
+import selectScreen from "../utils/selectScreen";
 
 export default (state, levels, currentLevel) => {
   const levelNum = state.level;
@@ -19,7 +20,7 @@ export default (state, levels, currentLevel) => {
         <span>Фото</span>
       </label>
       <label class="game__answer game__answer--paint">
-        <input name="question${index + 1}" type="radio" value="paint">
+        <input name="question${index}" type="radio" value="paint">
         <span>Рисунок</span>
       </label>
     </div>
@@ -33,7 +34,7 @@ export default (state, levels, currentLevel) => {
         ${answerContent}
       </form>
       <div class="stats">
-        ${stats}
+        ${stats(state)}
       </div>
     </div>
     ${footer}
@@ -53,17 +54,27 @@ export default (state, levels, currentLevel) => {
 
   const radioInputs = gameOneElement.querySelectorAll(`input[type="radio"]`);
   let count = 0;
+  let selectedRaioInput;
   const answer = [];
   radioInputs.forEach((item) => {
-    item.addEventListener(`change`, (evt) => {
+    item.addEventListener(`input`, (evt) => {
       const answerItem = {};
       const targetOption = evt.currentTarget.parentElement.parentElement;
       answerItem.url = targetOption.querySelector(`img`).src;
       answerItem.type = evt.currentTarget.value;
       answer.push(answerItem);
-      count++;
+
+      if (!selectedRaioInput || selectedRaioInput !== evt.target.name) {
+        count++;
+      }
+
+      selectedRaioInput = evt.target.name;
+
       if (count === 2) {
-        setActiveScreen(checkAnswer(state, levels, currentLevel, answer));
+        const answerTime = 5;
+        const newState = checkAnswer(state, levels, currentLevel, answerTime, answer);
+        const nextScreen = selectScreen(newState, levels);
+        setActiveScreen(nextScreen);
       }
     });
   });
