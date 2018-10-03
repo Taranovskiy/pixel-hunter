@@ -6,8 +6,9 @@ export default (state, levels, currentLevel, answerTime, answer) => {
   const newState = Object.assign({}, state);
   let statsItemValue;
 
-  if \(!isCorrectAnswer) {
+  if (!isCorrectAnswer) {
     statsItemValue = `wrong`;
+    newState.lives--;
   } else if (isCorrectAnswer && (answerTime < 10)) {
     statsItemValue = `fast`;
   } else if (isCorrectAnswer && (answerTime > 20)) {

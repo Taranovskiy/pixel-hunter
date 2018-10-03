@@ -6,10 +6,11 @@ import {QUESTIONS_AMOUNT} from "../data/constants";
 
 export default (state, levels) => {
   const levelNum = state.level;
+  const lives = state.lives;
   const currentLevel = levels[levelNum - 1];
   let nextScreen;
 
-  if (levelNum > QUESTIONS_AMOUNT) {
+  if (levelNum > QUESTIONS_AMOUNT || lives === 0) {
     return statsPage(state);
   }
 
