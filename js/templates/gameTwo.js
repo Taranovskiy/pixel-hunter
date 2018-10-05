@@ -4,7 +4,6 @@ import setActiveScreen from "../utils/setActiveScreen";
 import header from "./header";
 import stats from "./stats";
 import footer from "./footer";
-import imageResizer from "../utils/imageResizer";
 import checkAnswer from "../utils/checkAnswer";
 import selectScreen from "../utils/selectScreen";
 
@@ -15,7 +14,7 @@ export default (state, levels, currentLevel) => {
 
   const answerContent = level.answerOptions.map((answer, index) => `
     <div class="game__option">
-      <img src=${answer.url} alt="Option ${index + 1}">
+      <img src=${answer.url} alt="Option ${index + 1}"  width="705" height="455">
       <label class="game__answer  game__answer--photo">
         <input name="question${index}" type="radio" value="photo">
         <span>Фото</span>
@@ -42,13 +41,6 @@ export default (state, levels, currentLevel) => {
 `;
 
   const gameTwoElement = createElement(template);
-
-  const images = [...gameTwoElement.querySelectorAll(`.game__option img`)];
-  images.forEach((image) => {
-    image.addEventListener(`load`, () => {
-      return imageResizer(image);
-    });
-  });
 
   const backButton = gameTwoElement.querySelector(`.header__back`);
   backButton.addEventListener(`click`, () => setActiveScreen(greetingElement()));
