@@ -1,8 +1,8 @@
 export default class AbstractView {
 
-  static createElement(string) {
+  static createElement(html) {
     const container = document.createElement(`template`);
-    container.innerHTML = string;
+    container.innerHTML = html;
     return container.content;
   }
 
@@ -14,7 +14,8 @@ export default class AbstractView {
     return AbstractView.createElement(this.template);
   }
 
-  bind() {}
+  bind() {
+  }
 
   get element() {
     if (!this._element) {
@@ -22,5 +23,11 @@ export default class AbstractView {
       this.bind();
     }
     return this._element;
+  }
+
+  setActiveView(element) {
+    const mainScreen = document.querySelector(`main.central`);
+    mainScreen.innerHTML = ``;
+    mainScreen.appendChild(element);
   }
 }
