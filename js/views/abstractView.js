@@ -6,6 +6,12 @@ export default class AbstractView {
     return container.content;
   }
 
+  static setActiveView(element) {
+    const mainScreen = document.querySelector(`main.central`);
+    mainScreen.innerHTML = ``;
+    mainScreen.appendChild(element);
+  }
+
   get template() {
     throw new Error(`You have to define template for view`);
   }
@@ -23,11 +29,5 @@ export default class AbstractView {
       this.bind();
     }
     return this._element;
-  }
-
-  setActiveView(element) {
-    const mainScreen = document.querySelector(`main.central`);
-    mainScreen.innerHTML = ``;
-    mainScreen.appendChild(element);
   }
 }

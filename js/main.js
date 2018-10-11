@@ -1,4 +1,4 @@
-import setActiveScreen from './utils/setActiveScreen';
-import introElement from './layouts/intro/introView';
+import introElement from './views/intro/intro';
+import AbstractView from "./views/abstractView";
 
-setActiveScreen(introElement());
+AbstractView.setActiveView(introElement());

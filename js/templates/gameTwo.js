@@ -1,9 +1,9 @@
 import createElement from '../utils/createElement';
-import greetingElement from "./greeting";
+import greetingElement from "../views/greeting/greetingView";
 import setActiveScreen from "../utils/setActiveScreen";
-import header from "./header";
-import stats from "./stats";
-import footer from "./footer";
+import header from "../views/header/header";
+import stats from "../views/stats/stats";
+import footer from "../views/footer/footerViews";
 import checkAnswer from "../utils/checkAnswer";
 import selectScreen from "../utils/selectScreen";
 

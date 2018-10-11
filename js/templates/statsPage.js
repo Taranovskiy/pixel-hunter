@@ -1,9 +1,9 @@
 import createElement from '../utils/createElement';
-import greetingElement from "./greeting";
-import header from "./header";
-import stats from "./stats";
+import greetingElement from "../views/greeting/greetingView";
+import header from "../views/header/header";
+import stats from "../views/stats/stats";
 import setActiveScreen from "../utils/setActiveScreen";
-import footer from "./footer";
+import footer from "../views/footer/footerViews";
 
 export default (state) => {
   const correctScores = state.score.correct * 100;
