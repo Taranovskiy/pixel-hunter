@@ -1,11 +1,6 @@
-import setActiveScreen from '../../utils/setActiveScreen';
-import createElement from '../../utils/createElement';
-import greetingElement from '../greeting/greetingView';
 import header from '../header/header';
 import * as data from "../../data/data";
 import footer from "../footer/footer";
-import selectScreen from "../../utils/selectScreen";
-import generateLevels from "../../utils/generateLevels";
 import AbstractView from "../abstractView";
 
 const initialState = data.initialState;
@@ -59,5 +54,3 @@ export default class RulesView extends AbstractView {
     throw new Error(`Not implemented onClickContinueButton`);
   }
 }
-
-

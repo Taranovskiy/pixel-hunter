@@ -1,11 +1,11 @@
-import createElement from '../utils/createElement';
-import greetingElement from "../views/greeting/greetingView";
-import setActiveScreen from "../utils/setActiveScreen";
-import header from "../views/header/header";
-import stats from "../views/stats/stats";
-import footer from "../views/footer/footerViews";
-import checkAnswer from "../utils/checkAnswer";
-import selectScreen from "../utils/selectScreen";
+import createElement from '../../utils/createElement';
+import greetingElement from "../greeting/greetingView";
+import setActiveScreen from "../../utils/setActiveScreen";
+import header from "../header/header";
+import stats from "../stats/stats";
+import footer from "../footer/footerViews";
+import checkAnswer from "../../utils/checkAnswer";
+import selectScreen from "../../utils/selectScreen";
 
 export default (state, levels, currentLevel) => {
   const levelNum = state.level;
