@@ -12,7 +12,7 @@ export default () => {
   const rules = new RulesView();
 
   rules.onClickBackButton = () => {
-    AbstractView.setActiveView(greeting())
+    AbstractView.setActiveView(greeting());
   };
 
   rules.onClickContinueButton = () => {

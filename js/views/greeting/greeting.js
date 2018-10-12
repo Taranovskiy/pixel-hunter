@@ -8,4 +8,4 @@ export default () => {
     AbstractView.setActiveView(rulesElement());
   };
   return greeting.element;
-}
+};

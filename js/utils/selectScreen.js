@@ -1,7 +1,7 @@
 import gameOne from "../views/game/gameTypeOne";
 import gameTwo from "../views/game/gameTypeTwo";
 import gameThree from "../views/game/gameTypeThree";
-import statsPage from "../templates/statsPage";
+import statsPage from "../views/statsPage/statsPage";
 import {QUESTIONS_AMOUNT} from "../data/constants";
 
 export default (state, levels) => {
