@@ -4,6 +4,8 @@ import selectScreen from "../../utils/selectScreen";
 import AbstractView from "../abstractView";
 import GameTypeOneView from "./gameTypeOneView";
 
+import App from "../../main";
+
 export default (state, levels, currentLevel) => {
   const gameTypeOne = new GameTypeOneView(state, levels, currentLevel);
 
@@ -16,6 +18,7 @@ export default (state, levels, currentLevel) => {
     const newState = checkAnswer(state, levels, currentLevel, answerTime, answer);
     const nextScreen = selectScreen(newState, levels);
     AbstractView.setActiveView(nextScreen);
+    // App.showStats();
   };
 
   return gameTypeOne.element;
