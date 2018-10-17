@@ -1,30 +1,33 @@
-import gameOne from "../views/game/gameTypeOne";
-import gameTwo from "../views/game/gameTypeTwo";
-import gameThree from "../views/game/gameTypeThree";
-import statsPage from "../views/statsPage/statsPage";
 import {QUESTIONS_AMOUNT} from "../data/constants";
+import GameTypeOneView from "../views/game/gameTypeOneView";
+import GameTypeTwoView from "../views/game/gameTypeTwoView";
+import GameTypeThreeView from "../views/game/gameTypeThreeView";
+import App from "../app";
 
 export default (state, levels) => {
   const levelNum = state.level;
   const lives = state.lives;
   const currentLevel = levels[levelNum - 1];
-  let nextScreen;
+  let nextScreen = null;
 
   if (levelNum > QUESTIONS_AMOUNT || lives === 0) {
-    return statsPage(state);
+    App.showStats(state);
+    return nextScreen;
   }
 
   switch (currentLevel.levelType) {
     case 1:
-      nextScreen = gameOne(state, levels, currentLevel);
+      nextScreen = new GameTypeOneView(state, levels);
       break;
 
     case 2:
-      nextScreen = gameTwo(state, levels, currentLevel);
+      nextScreen = new GameTypeTwoView(state, levels);
+
       break;
 
     case 3:
-      nextScreen = gameThree(state, levels, currentLevel);
+      nextScreen = new GameTypeThreeView(state, levels);
+
       break;
   }
 

@@ -1,4 +1,6 @@
-export default (currentLevel, answer) => {
+export default (state, levels, answer) => {
+  const levelNum = state.level;
+  const currentLevel = levels[levelNum - 1];
   let isCorrect;
   const levelOptions = currentLevel.answerOptions;
 

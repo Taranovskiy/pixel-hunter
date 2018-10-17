@@ -1,40 +1,31 @@
-import {QUESTIONS_AMOUNT} from "../../data/constants";
-import statsPage from "../statsPage/statsPage";
-import gameOne from "./gameTypeOne";
-import gameTwo from "./gameTypeTwo";
-import gameThree from "./gameTypeThree";
+import generateLevels from "../../utils/generateLevels";
+import checkAnswer from "../../utils/checkAnswer";
+import selectScreen from "../../utils/selectScreen";
+import {initialState} from "../../data/data";
+import AbstractView from "../abstractView";
+import App from "../../app";
 
 export default class Game {
-  constructor(state, levels) {
+  constructor(state = initialState) {
     this.state = state;
-    this.levels = levels;
+    this.levels = generateLevels();
+    this.view = selectScreen(this.state, this.levels);
   }
 
   init() {
-    const levelNum = this.state.level;
-    const lives = this.state.lives;
-    const currentLevel = this.levels[levelNum - 1];
-    let nextScreen;
+    AbstractView.setActiveView(this.view.element);
 
-    if (levelNum > QUESTIONS_AMOUNT || lives === 0) {
-      return statsPage(this.state);
-    }
+    this.view.onClickBackButton = () => {
+      App.showGreeting();
+    };
 
-    switch (currentLevel.levelType) {
-      case 1:
-        nextScreen = gameOne(this.state, this.levels, currentLevel);
-        break;
-
-      case 2:
-        nextScreen = gameTwo(this.state, this.levels, currentLevel);
-        break;
-
-      case 3:
-        nextScreen = gameThree(this.state, this.levels, currentLevel);
-        break;
-    }
-
-    return nextScreen;
-
+    this.view.onAnswer = (answer) => {
+      const answerTime = 5;
+      this.state = checkAnswer(this.state, this.levels, answerTime, answer);
+      this.view = selectScreen(this.state, this.levels);
+      if (this.view) {
+        this.init();
+      }
+    };
   }
 }

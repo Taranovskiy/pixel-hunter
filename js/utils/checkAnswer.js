@@ -1,7 +1,7 @@
 import isCorrect from "./isCorrect";
 
-export default (state, levels, currentLevel, answerTime, answer) => {
-  const isCorrectAnswer = isCorrect(currentLevel, answer);
+export default (state, levels, answerTime, answer) => {
+  const isCorrectAnswer = isCorrect(state, levels, answer);
   const newState = Object.assign({}, state);
   let statsItemValue;
 

@@ -1,6 +1,6 @@
 import GreetingView from "./greetingView";
 import AbstractView from "../abstractView";
-import App from "../../main";
+import App from "../../app";
 
 export default class Greeting {
   constructor() {
