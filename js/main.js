@@ -4,14 +4,12 @@ import Greeting from "./views/greeting/greeting";
 import Rules from "./views/rules/rules";
 import Stats from "./views/stats/stats";
 
-// AbstractView.setActiveView(Intro());
-
 const ControllerID = {
-  INTRO: '',
-  GREETING: 'greeting',
-  RULES: 'rules',
-  GAME: 'game',
-  STATS: 'stats'
+  INTRO: ``,
+  GREETING: `greeting`,
+  RULES: `rules`,
+  GAME: `game`,
+  STATS: `stats`
 };
 
 const getControllerIDFromHash = (hash) => hash.replace(`#`, ``);
@@ -28,7 +26,7 @@ class App {
 
     window.onhashchange = () => {
       this.changeController(getControllerIDFromHash(location.hash));
-    }
+    };
   }
 
   changeController(route = ``) {
@@ -38,10 +36,6 @@ class App {
 
   init() {
     this.changeController(getControllerIDFromHash(location.hash));
-  }
-
-  showIntro() {
-    location.hash = ControllerID.INTRO;
   }
 
   showGreeting() {
