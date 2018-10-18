@@ -25,18 +25,32 @@ class App {
     };
 
     window.onhashchange = () => {
-      this.changeController(getControllerIDFromHash(location.hash));
+      const {controller, state} = this._parseHashFromUrl();
+      this.changeController(controller, state);
     };
   }
 
-  changeController(route = ``) {
-    const Controller = this.routes[route];
-    new Controller(this._state).init();
+  init() {
+    const {controller, state} = this._parseHashFromUrl();
+    this.changeController(controller, state);
   }
 
-  init() {
-    this.changeController(getControllerIDFromHash(location.hash));
+  changeController(route = ``, state) {
+    const Controller = this.routes[route];
+    if (Controller) {
+      new Controller(state).init();
+    }
   }
+
+  _parseHashFromUrl() {
+    const hash = location.hash.split(`=`);
+    const [controller, hashValue] = hash;
+    return {
+      controller: getControllerIDFromHash(controller),
+      state: hashValue ? JSON.parse(atob(hashValue)) : hashValue
+    };
+  }
+
 
   showGreeting() {
     location.hash = ControllerID.GREETING;
@@ -47,8 +61,8 @@ class App {
   }
 
   showStats(state) {
-    this._state = state;
-    location.hash = ControllerID.STATS;
+    const encodeState = btoa(JSON.stringify(state));
+    location.hash = `${ControllerID.STATS}=${encodeState}`;
   }
 
   showGame() {
