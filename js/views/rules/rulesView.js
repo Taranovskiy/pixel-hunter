@@ -1,7 +1,7 @@
 import header from '../header/header';
 import * as data from "../../data/data";
 import footer from "../footer/footer";
-import AbstractView from "../abstractView";
+import AbstractView from "../../abstractView";
 
 const initialState = data.initialState;
 

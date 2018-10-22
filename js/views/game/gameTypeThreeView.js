@@ -1,4 +1,4 @@
-import AbstractView from "../abstractView";
+import AbstractView from "../../abstractView";
 import header from "../header/header";
 import stats from "../stats/stats";
 import footer from "../footer/footer";

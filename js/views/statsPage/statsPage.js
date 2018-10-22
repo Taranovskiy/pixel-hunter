@@ -1,5 +1,6 @@
 import StatsPageView from "./statsPageView";
-import AbstractView from "../abstractView";
+import AbstractView from "../../abstractView";
+import App from "../../app";
 
 export default class StatsPage {
   constructor(state) {
@@ -8,6 +9,10 @@ export default class StatsPage {
   }
 
   init() {
+    this.view.onClickBackButton = () => {
+      App.showGreeting();
+    };
+
     AbstractView.setActiveView(this.view.element);
   }
 }

@@ -1,5 +1,5 @@
 import RulesView from "./rulesView";
-import AbstractView from "../abstractView";
+import AbstractView from "../../abstractView";
 import App from "../../app";
 
 export default class Rules {

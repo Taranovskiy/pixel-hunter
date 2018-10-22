@@ -1,3 +1,4 @@
+import AbstractModel from "./abstractModel";
 import Intro from "./views/intro/intro";
 import Greeting from "./views/greeting/greeting";
 import Rules from "./views/rules/rules";
@@ -16,6 +17,32 @@ const getControllerIDFromHash = (hash) => hash.replace(`#`, ``);
 
 class App {
   constructor() {
+
+    this.model = new class extends AbstractModel {
+      get urlRead() {
+        return `https://intensive-ecmascript-server-btfgudlkpi.now.sh/pixel-hunter/questions`;
+      }
+
+      get urlWrite() {
+        return `https://intensive-ecmascript-server-btfgudlkpi.now.sh/pixel-hunter/stats/:username`;
+      }
+    }();
+  }
+
+  init() {
+    this.model.load()
+      .then((data) => {
+        window.console.log(data);
+        return this.setup();
+      })
+      .then(() => {
+        const {controller, state} = this._parseHashFromUrl();
+        this.changeController(controller, state);
+      })
+      .catch((err) => window.console.error(`ERROR: ${err}`));
+  }
+
+  setup() {
     this.routes = {
       [ControllerID.INTRO]: Intro,
       [ControllerID.GREETING]: Greeting,
@@ -28,11 +55,6 @@ class App {
       const {controller, state} = this._parseHashFromUrl();
       this.changeController(controller, state);
     };
-  }
-
-  init() {
-    const {controller, state} = this._parseHashFromUrl();
-    this.changeController(controller, state);
   }
 
   changeController(route = ``, state) {

@@ -1,4 +1,4 @@
-import AbstractView from "../abstractView";
+import AbstractView from "../../abstractView";
 import footer from "../footer/footer";
 
 export default class GreetingView extends AbstractView {

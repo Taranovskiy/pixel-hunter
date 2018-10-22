@@ -2,7 +2,7 @@ import generateLevels from "../../utils/generateLevels";
 import checkAnswer from "../../utils/checkAnswer";
 import selectScreen from "../../utils/selectScreen";
 import {initialState} from "../../data/data";
-import AbstractView from "../abstractView";
+import AbstractView from "../../abstractView";
 import App from "../../app";
 
 export default class Game {
