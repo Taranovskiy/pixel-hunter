@@ -14,6 +14,7 @@ const imagemin = require('gulp-imagemin');
 const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 const mocha = require('gulp-mocha');
+const uglify = require('gulp-uglify-es').default;
 
 gulp.task('style', function () {
   gulp.src('sass/style.scss')
@@ -43,6 +44,7 @@ gulp.task('scripts', function () {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(rollup({}, 'iife'))
+    .pipe(uglify())
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('build/js'));
 });
