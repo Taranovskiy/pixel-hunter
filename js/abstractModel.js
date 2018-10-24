@@ -7,12 +7,20 @@ export default class abstractModel {
     throw new Error(`Abstract method. Define the URL for model`);
   }
 
-  load() {
-    return fetch(this.urlRead)
+  load(url = this.urlRead) {
+    return fetch(url)
       .then((resp) => resp.json());
   }
 
-  send() {
+  send(data) {
+    const requestSettings = {
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`
+      },
+      method: `POST`,
+    };
 
+    return fetch(this.urlWrite, requestSettings);
   }
 }

@@ -11,6 +11,9 @@ export default (state, levels) => {
   let nextScreen = null;
 
   if (levelNum > QUESTIONS_AMOUNT || lives === 0) {
+    App.model.send(state);
+    App.model.load(App.model.urlWrite)
+      .then((data) => window.console.log(data));
     App.showStats(state);
     return nextScreen;
   }
